@@ -1,3 +1,5 @@
+import { ADD_ITEM, REMOVE_ITEM } from '../actions';
+
 const initialState = {
 	additionalPrice: 0,
 	car: {
@@ -14,8 +16,30 @@ const initialState = {
 	]
 };
 
-export const reducer = () => {
-	return {
-		title: 'Hello from Redux Store'
-	};
+export const reducer = (state = initialState, action) => {
+	console.log('this is the payload', action.payload);
+	switch (action.type) {
+		case ADD_ITEM:
+			return {
+				...state,
+				additionalPrice: (state.additionalPrice += action.payload.price),
+				car: {
+					...state.car,
+					features: [ ...state.car.features, action.payload ]
+				},
+				store: state.store.filter((item) => item.id !== action.payload.id)
+			};
+		case REMOVE_ITEM:
+			return {
+				...state,
+				additionalPrice: (state.additionalPrice -= action.payload.price),
+				car: {
+					...state.car,
+					features: state.car.features.filter((feature) => feature.id !== action.payload.id)
+				},
+				store: state.store.concat(action.payload)
+			};
+		default:
+			return state;
+	}
 };
