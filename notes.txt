@@ -1,0 +1,9 @@
+1. I drew the data we had and where it was stored
+2. I started setting up redux and make and reducer and moved the state into the reducer.
+3. got all the data connected to my app and passed to the components that needed it.
+4. I wrote my click handlers
+5. wrote in the actions and added them to the reducer, and then wrote the cases for each action.
+
+the biggest issues I ran into was just figuring out the syntax for the onClick handlers, 
+then I was using the wrong name when calling a prop in my components. 
+and I also missed line of code in my reducer that took me a little while to figure out.
